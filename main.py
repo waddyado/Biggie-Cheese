@@ -12,9 +12,9 @@ print('         |___/ |___/                                          ')
 
 
 def notifyMe():
-    client = Client("AC6aab50d8783956d39774870c22c2fa3b", "ad8da443c161de8fdbd11e2606db852b")
-    client.messages.create(to="+17272409660",
-                        from_="+13392290104",
+    client = Client("twilio api key", "twilio api key")
+    client.messages.create(to="+your number",
+                        from_="+twilio number",
                         body="Biggie Cheese is being accessed by someone")
 
 
