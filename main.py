@@ -1,6 +1,8 @@
 import socket
 import sys
-from twilio.rest import Client
+import exploits
+
+
 print('______ _             _        _____ _                         ')
 print('| ___ (_)           (_)      /  __ \ |                        ')
 print('| |_/ /_  __ _  __ _ _  ___  | /  \/ |__   ___  ___  ___  ___ ')
@@ -11,21 +13,18 @@ print('          __/ | __/ |                                         ')
 print('         |___/ |___/                                          ')
 
 
-def notifyMe():
-    client = Client("twilio api key", "twilio api key")
-    client.messages.create(to="+your number",
-                        from_="+twilio number",
-                        body="Biggie Cheese is being accessed by someone")
 
 
-def start(passwd):
-    if passwd == 'default':
-        main(input('Enter listening IP:>'))
 
-    if passwd != 'default':
-        notifyMe()
-        exit()
-
+        
+def exploit():
+    print('------ULTIMATE_PWNAGE------')
+    print('Type list To List Exploits')
+    print('Exploit syntax: <exploit name>')
+    
+    inp = (':>')
+    
+    
 def send():
     command = input(':>')
     conn.send(command.encode())
@@ -33,21 +32,52 @@ def send():
     rx = rx.decode()
     print('>', rx)
     
+    
 def main(ip):
     global conn
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     serv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     serv.bind((ip, 8080))
     serv.listen()
-    print('Listening')
-    while True:
-        conn, addr = serv.accept()
-        from_client = ''
-        with conn:
-            print('Connection Established')
-            print('Session Created with' , addr)
-            print("Session Opened")
-            while True:
-                send()
+    print('------------CONTROL PANEL------------')
+    print('     1.Listener                      ')
+    print('     2.Generate A Payload            ')
+    print('-------------------------------------')
+    inp = input(':>')
+    
+    if inp == '1':
+        
+        print('Listening')
+        while True:
+            conn, addr = serv.accept()
+            from_client = ''
+            with conn:
+                print('Connection Established')
+                print('Session Created with' , addr)
+                print('------YOU''RE IN----------')
+                print('      1. Exploits         ')
+                print('      2. Shell            ')
+                print('      3. Exit             ')
+                print('--------------------------')
+                 
 
-start(input('Greetings! Enter the password:>'))
+                
+    elif inp == '2':
+        print('WIP')
+        '''
+               WIP
+            rhost = input('RHOST:>')
+            rport = input('RPORT:>')
+            payload = open('payload.txt', 'w')
+            print('Generating payload /')
+            payload.write
+            time.sleep(0.5)
+            os.system('cls')
+            payload.write()
+            
+            '''
+    elif inp == '3':
+        exit()
+            
+main(input('Enter listening IP:>'))
+
